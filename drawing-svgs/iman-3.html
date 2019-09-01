@@ -7,27 +7,28 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
-        body {
-            height: 2000px;
-        }
+            /* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_svg_scrolldrawing */
+            body {
+                height: 2000px;
+            }
 
-        #logo {
-            position: fixed;
-            top: 30%;
-            left: 40%;
-            width: 400px;
-            height: 210px;
-            margin-left: -50px;
-        }
+            #logo {
+                position: fixed;
+                top: 30%;
+                left: 40%;
+                width: 400px;
+                height: 210px;
+                margin-left: -50px;
+            }
 
-        #name {
-            position: fixed;
-            top: 40%;
-            left: 40%;
-            width: 400px;
-            height: 210px;
-            margin-left: -50px;
-        }
+            #name {
+                position: fixed;
+                top: 40%;
+                left: 40%;
+                width: 400px;
+                height: 210px;
+                margin-left: -50px;
+            }
         </style>
     </head>
     <body>
@@ -64,6 +65,7 @@
                     L 65,57
                     L 75,55
                     "
+                    pathLength="1500"
                 />
             </svg>
             <svg id="name" viewbox="0 0 100 100">
@@ -77,31 +79,37 @@
                     M 5,28
                     V 50
                     M 15,50
+                    V 49.5
                     L 20,30
                     L 30,48
                     L 40,30
                     L 45,50
+                    V 50.5
                     M 55,50
+                    V 49.5
                     L 65,30
                     L 75,50
+                    V 50.5
                     M 85,50
                     V 30
                     L 105,48
                     V 28
                     "
+                    pathLength="300"
                 />
             </svg>
         </div>
 
         <script>
-            const iman = document.getElementById('hexagon');
-            const length = iman.getTotalLength();
+            // <!--https://www.w3schools.com/howto/howto_js_scrolldrawing.asp-->
+            const hexa = document.getElementById('hexagon');
+            const length = hexa.getTotalLength();
 
             // The start position of the drawing
-            iman.style.strokeDasharray = length;
+            hexa.style.strokeDasharray = length;
 
             // Hide the triangle by offsetting dash. Remove this line to show the triangle before scroll draw
-            iman.style.strokeDashoffset = length;
+            hexa.style.strokeDashoffset = length;
 
             // Find scroll percentage on scroll (using cross-browser properties), and offset dash same amount as percentage scrolled
             window.addEventListener("scroll", showLogo);
@@ -112,19 +120,19 @@
                 var draw = length * scrollpercent;
                 
                 // Reverse the drawing (when scrolling upwards)
-                iman.style.strokeDashoffset = length - draw;
+                hexa.style.strokeDashoffset = length - draw;
             }
         </script>
         <script>
-                console.log('hello')
-                const nami = document.getElementById('brand');
-                const panjang = nami.getTotalLength();
+                // <!--https://www.w3schools.com/howto/howto_js_scrolldrawing.asp-->
+                const iman = document.getElementById('brand');
+                const panjang = iman.getTotalLength();
     
                 // The start position of the drawing
-                nami.style.strokeDasharray = panjang;
+                iman.style.strokeDasharray = panjang;
     
                 // Hide the triangle by offsetting dash. Remove this line to show the triangle before scroll draw
-                nami.style.strokeDashoffset = panjang;
+                iman.style.strokeDashoffset = panjang;
     
                 // Find scroll percentage on scroll (using cross-browser properties), and offset dash same amount as percentage scrolled
                 window.addEventListener("scroll", showName);
@@ -135,7 +143,7 @@
                     var dr = panjang * scrollper;
                     
                     // Reverse the drawing (when scrolling upwards)
-                    nami.style.strokeDashoffset = panjang - dr;
+                    iman.style.strokeDashoffset = panjang - dr;
                 }
         </script>
     </body>

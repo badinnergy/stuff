@@ -8,9 +8,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
             /* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_svg_scrolldrawing */
-            body {
-                height: 2000px;
-            }
             #logo {
                 position: fixed;
                 top: 20%;
@@ -18,6 +15,21 @@
                 width: 400px;
                 height: 400px;
                 margin-left: -50px;
+            }
+
+            #love {
+                stroke-dasharray: 270;
+                stroke-dashoffset: 0;
+                animation: draw 3s linear alternate infinite;
+            }
+
+            @keyframes draw {
+                from {
+                    stroke-dashoffset: 270;
+                }
+                to {
+                    stroke-dashoffset: 0;
+                }
             }
         </style>
     </head>
@@ -43,29 +55,5 @@
                 Q 10,60 10,30 z -->
             </svg>
         </div>
-
-        <script>
-                // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_svg_scrolldrawing
-                const hexa = document.getElementById('love');
-                const length = hexa.getTotalLength();
-    
-                // The start position of the drawing
-                hexa.style.strokeDasharray = length;
-    
-                // Hide the triangle by offsetting dash. Remove this line to show the triangle before scroll draw
-                hexa.style.strokeDashoffset = length;
-    
-                // Find scroll percentage on scroll (using cross-browser properties), and offset dash same amount as percentage scrolled
-                window.addEventListener("scroll", showLogo);
-    
-                function showLogo() {
-                    var scrollpercent = (document.body.scrollTop + document.documentElement.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
-    
-                    var draw = length * scrollpercent;
-                    
-                    // Reverse the drawing (when scrolling upwards)
-                    hexa.style.strokeDashoffset = length - draw;
-                }
-            </script>
     </body>
 </html>
